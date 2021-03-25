@@ -1,5 +1,14 @@
-.window {
-    width: 900px;
-    height: 600px;
-    background-color: green;
+@import "utils/var";
+@import "utils/mixins";
+@import "utils/reset";
+@import "utils/button";
+
+@import "components/window.scss";
+
+
+body {
+    @include font("Inter", 14px);
+
+    background-color: $bg-color;
 }
+

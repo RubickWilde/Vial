@@ -1,0 +1,25 @@
+$base-font-size: 10;
+
+$bg-color: #eeeeee;
+$font-black: #222831;
+$grey1: #393e46;
+
+$border: 1px solid #000000;
+$border-grey: 1px solid $grey1;
+$box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+0px 4px 4px rgba(0, 0, 0, 0.25),
+0px 2px 0px #000000;
+
+
+$game-user-height: 500px;
+$game-user-width: 350px;
+
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1024px;
+
+$site_width: 1024px;
+
+$global_desktop_padding: 0;
+$global_tablet_padding: 0 20px;
+$global_mobile_padding: 0 10px;
