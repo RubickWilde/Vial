@@ -1,6 +1,6 @@
 interface AdvertisingStrategy {
     segment: string;
-    advertismentType: any;
+    advertismentTypes: any;
 }
 
 const adQuotient = {
@@ -50,7 +50,7 @@ const minAdBudget = {
         "externalDevices": 28000,
         "promotion": 13000
     },
-    "Кисляк (простокваша)": {
+    "Простокваша": {
         "internet": 13000,
         "television": 75000,
         "radio": 18000,
@@ -59,7 +59,7 @@ const minAdBudget = {
         "externalDevices": 10000,
         "promotion": 3000
     },
-    "Cметана": {
+    "Сметана": {
         "internet": 32000,
         "television": 340000,
         "radio": 70000,
@@ -77,7 +77,7 @@ const minAdBudget = {
         "externalDevices": 180000,
         "promotion": 165000
     },
-    "Сирна (творожна) продукція": {
+    "Творог": {
         "internet": 47000,
         "television": 210000,
         "radio": 52000,
@@ -86,7 +86,7 @@ const minAdBudget = {
         "externalDevices": 18000,
         "promotion": 23000
     },
-    "М'який сир": {
+    "Мягкий сыр": {
         "internet": 49000,
         "television": 148000,
         "radio": 52000,
@@ -95,7 +95,7 @@ const minAdBudget = {
         "externalDevices": 23000,
         "promotion": 19000
     },
-    "Твердий сир": {
+    "Твердый сыр": {
         "internet": 42000,
         "television": 148000,
         "radio": 55000,
@@ -104,7 +104,7 @@ const minAdBudget = {
         "externalDevices": 24000,
         "promotion": 26000
     },
-    "Плавленний сир": {
+    "Плавленный сыр": {
         "internet": 17000,
         "television": 96000,
         "radio": 11000,
@@ -113,7 +113,7 @@ const minAdBudget = {
         "externalDevices": 27000,
         "promotion": 8000
     },
-    "Згущеное молоко": {
+    "Згущенка": {
         "internet": 32000,
         "television": 156000,
         "radio": 23000,
@@ -122,7 +122,7 @@ const minAdBudget = {
         "externalDevices": 31000,
         "promotion": 45000
     },
-    "Вершкове масло": {
+    "Масло": {
         "internet": 74000,
         "television": 195000,
         "radio": 100000,
@@ -134,69 +134,129 @@ const minAdBudget = {
 }
 
 const basicMarketingEffect = {
-     "Молоко Стерилізоване": {
-        internet: 0.000208,
-        television: 0.000011,
-        radio: 0.000026,
-        transport: 0.000274,
-        press: 0.000024,
-        externalDevices: 0.000095,
-        promotion: 0.000004
-    },
-    "Молоко Пастеризоване": {
-        internet: 0.000221,
-        television: 0.000011,
-        radio: 0.000027,
-        transport: 0.000250,
-        press: 0.000026,
-        externalDevices: 0.000090,
-        promotion: 0.000004
-    },
-    "Кефір": {
-       
-    },
-    "Ряжанка": { //У кефира и ряжанкки одинаковая реклама
-      
-    },
-    "Кисляк (простокваша)": {
-        internet: 0.000179,
-        television: 0.000009,
-        radio: 0.000025,
-        transport: 0.000250,
-        press: 0.000019,
-        externalDevices: 0.000060,
-        promotion: 0.000004
-    },
-    "Cметана": {
-       
-    },
-    "Йогурт": { //У кефира и ряжка одинаковая реклама
-       
-    },
-    "Сирна (творожна) продукція": {
-       
-    },
-    "М'який сир": {
-        
-    },
-    "Твердий сир": {
-        
-    },
-    "Плавленний сир": {
-       
-    },
-    "Згущеное молоко": {
-        
-    },
-    "Вершкове масло": {
-      
-    },
+  "Молоко Стерилізоване": {
+    "internet": 0.000208,
+    "television": 0.000011,
+    "radio": 0.000026,
+    "transport": 0.000274,
+    "press": 0.000024,
+    "externalDevices": 0.000095,
+    "promotion": 0.000004
+  },
+  "Молоко Пастеризоване": {
+    "internet": 0.000221,
+    "television": 0.000011,
+    "radio": 0.000027,
+    "transport": 0.00025,
+    "press": 0.000026,
+    "externalDevices": 0.00009,
+    "promotion": 0.000004
+  },
+  "Кефір": {
+    "internet": 0.00025,
+    "television": 0.00001,
+    "radio": 0.00002,
+    "transport": 0.00031,
+    "press": 0.00002,
+    "externalDevices": 0.0001,
+    "promotion": 0
+  },
+  "Ряжанка": {
+    "internet": 0.00025,
+    "television": 0.00001,
+    "radio": 0.00002,
+    "transport": 0.00031,
+    "press": 0.00002,
+    "externalDevices": 0.0001,
+    "promotion": 0
+  },
+  "Простокваша": {
+    "internet": 0.000179,
+    "television": 0.000009,
+    "radio": 0.000025,
+    "transport": 0.00025,
+    "press": 0.000019,
+    "externalDevices": 0.00006,
+    "promotion": 0.000004
+  },
+  "Сметана": {
+    "internet": 0.0003,
+    "television": 0.00001,
+    "radio": 0.00004,
+    "transport": 0.00051,
+    "press": 0.00004,
+    "externalDevices": 0.00008,
+    "promotion": 0
+  },
+  "Йогурт": {
+    "internet": 0.0009,
+    "television": 0.00001,
+    "radio": 0.00007,
+    "transport": 0.00194,
+    "press": 0.00006,
+    "externalDevices": 0.00023,
+    "promotion": 0
+  },
+  "Творог": {
+    "internet": 0.00037,
+    "television": 0.00001,
+    "radio": 0.00003,
+    "transport": 0.00051,
+    "press": 0.00004,
+    "externalDevices": 0.00008,
+    "promotion": 0
+  },
+  "Мягкий сыр": {
+    "internet": 0.00038,
+    "television": 0.00001,
+    "radio": 0.00003,
+    "transport": 0.00052,
+    "press": 0.00004,
+    "externalDevices": 0.00009,
+    "promotion": 0
+  },
+  "Твердый сыр": {
+    "internet": 0.00035,
+    "television": 0.00001,
+    "radio": 0.00003,
+    "transport": 0.00052,
+    "press": 0.00004,
+    "externalDevices": 0.00009,
+    "promotion": 0
+  },
+  "Плавленный сыр": {
+    "internet": 0.00021,
+    "television": 0.00001,
+    "radio": 0.00002,
+    "transport": 0.00027,
+    "press": 0.00002,
+    "externalDevices": 0.00009,
+    "promotion": 0
+  },
+  "Згущенка": {
+    "internet": 0.00045,
+    "television": 0.00001,
+    "radio": 0.00004,
+    "transport": 0.0007,
+    "press": 0.00004,
+    "externalDevices": 0.00012,
+    "promotion": 0
+  },
+  "Масло": {
+    "internet": 0.00094,
+    "television": 0.00002,
+    "radio": 0.00004,
+    "transport": 0.00789,
+    "press": 0.00006,
+    "externalDevices": 0.00039,
+    "promotion": 0.00001
+  }
 }
 
 class AdvertisingStrategy {
     constructor(segment:string,internet = 0, television = 0, radio = 0, transport = 0, press = 0, externalDevices = 0, promotion = 0) {
         this.segment = segment;
-        this.advertismentType = {
+        this.advertismentTypes = {
             internet: internet,
             television: television,
             radio: radio,
@@ -210,57 +270,92 @@ class AdvertisingStrategy {
     calcMarketingEffect(adType:any):any {
         let segment:any = this.segment;
 
-        const budget:any = this.advertismentType[adType]/minAdBudget[segment][adType]; //Minimal budget times
+        console.log(minAdBudget[segment] + " is segment" + segment);
+        const budget:any = this.advertismentTypes[adType]/minAdBudget[segment][adType]; //Minimal budget times
 
         if (budget < 1) {
             alert(`Минимальный бюджет на ${adType} составляет ${minAdBudget[segment][adType]}. Реклама в этом сегменте будет снижена до 0`);
             return 0;
         }
 
+        if (basicMarketingEffect[segment][adType] == null || basicMarketingEffect[segment][adType] == undefined) {
+            alert("Для данного рынка не установлены коэфициенты");
+        }
+
         return basicMarketingEffect[segment][adType] * Math.pow(adQuotient[adType],Math.log2(budget));
+    }
+
+    findDeriviatives() {    //Возвращает 
+        const deriviatives = new Array(7);
+
+        let i = 0,
+            maxDeriviative = 0;
+
+        const segment = this.segment; 
+        
+        for (let adType in this.advertismentTypes) {
+            if (deriviatives[i] == undefined) {
+                deriviatives[i] = basicDeriviative(adType, segment); // Считаем базовую производную для каждого сегмента
+            } else {
+                //Посчитать производную для сегмента
+            }
+            
+            if (deriviatives[i][0] > maxDeriviative) {
+                console.log("is bigger");
+                maxDeriviative = deriviatives[i][0];
+            }
+
+            i++;
+        }
+
+        function basicDeriviative(adType, segment):Array<number> {
+            return [minAdBudget[segment][adType]/basicMarketingEffect[segment][adType],minAdBudget[segment][adType]];
+        }
     }
 
     calcDeriviative(adType:string):number {
         const segment = this.segment,
-              markEffect = basicMarketingEffect[segment][adType],
-              quotient = adQuotient[adType],
-              budget = this.advertismentType[adType]/minAdBudget[segment][adType]; //Minimal budget times
-              
+              markEffect = basicMarketingEffect[segment][adType], // Базовый возможный рыночный эффект
+              quotient = adQuotient[adType], // Коэфициент на данный вид рекламы
+              budget = this.advertismentTypes[adType]/minAdBudget[segment][adType]; //Соотношение текущего и минимального бюджетов
 
         return (markEffect * Math.log(quotient) * Math.pow(quotient, Math.log(budget)/Math.log(2)))/(budget+Math.log(2));
     }
 
-    calcSummaryMarketingEffect():number {
-        let sum:any = 0;
+    calcSummaryMarketingEffect(): Array<number> {
+        let sum: Array<number> = [];
+        let result = 0;
         let i = 0;
         
-        for (let type in this.advertismentType) {
+        for (let type in this.advertismentTypes) {
             i++;
             const markEffect = this.calcMarketingEffect(type);
             if (markEffect == 0) i--;
-            sum += markEffect; 
+            result += markEffect; 
+            sum.push(markEffect);
         }
 
         switch (i) {
             case 2:
-                sum += 0.00020 
+                result += 0.00020 
                 break;
             case 3:
-                sum += 0.00040;
+                result += 0.00040;
                 break;
             case 4:
-                sum += 0.00070;
+                result += 0.00070;
                 break;
             case 5:
-                sum += 0.001
+                result += 0.001
                 break;
             case 6:
-                sum += 0.0013
+                result += 0.0013
                 break;
             case 7: 
-                sum += 0.0017
+                result += 0.0017
         }
 
+        sum.push(result)
         return sum;
     }
 
@@ -268,33 +363,29 @@ class AdvertisingStrategy {
     calcBudgetSum():number {
         let sum:any = 0;
 
-        for (let type in this.advertismentType) {
-            if (typeof this.advertismentType[type] != "number") continue;
-            sum += this.advertismentType[type]; 
+        for (let type in this.advertismentTypes) {
+            if (typeof this.advertismentTypes[type] != "number") continue;
+            sum += this.advertismentTypes[type]; 
         }
 
         return sum;
     }
 }
 
-function findAdvertisingStrategy(segment:string):void {
-    const currentStrategy = new AdvertisingStrategy(segment);
+// function findAdvertisingStrategy(segment:string):void {
+//     const currentStrategy = new AdvertisingStrategy(segment);
 
-    let basicDeriviatives = [];
+//     let basicDeriviatives = [];
     
-    for (let type in currentStrategy.advertismentType) {
-        let deriviative:number = basicMarketingEffect[segment][type]/minAdBudget[segment][type];
-        console.log(`basicMarketingEffect[segment][type] is ${basicMarketingEffect[segment][type]}; minAdBudget is ${minAdBudget[segment][type]}; deriviative is ${deriviative}`)
-        basicDeriviatives.push(deriviative);
-    }
+//     for (let type in currentStrategy.advertismentTypes) {
+//         let deriviative:number = basicMarketingEffect[segment][type]/minAdBudget[segment][type];
+//         console.log(`basicMarketingEffect[segment][type] is ${basicMarketingEffect[segment][type]}; minAdBudget is ${minAdBudget[segment][type]}; deriviative is ${deriviative}`)
+//         basicDeriviatives.push(deriviative);
+//     }
 
-}
+// }
 
-// const maxAdvertisingBudget = new AdvertisingStrategy("Молоко Стерилізоване",17000, 128000, 21000, 14000, 18000, 27000, 8000);
-
-// console.log(maxAdvertisingBudget.calcSummaryMarketingEffect());
-
-findAdvertisingStrategy("Молоко Стерилізоване");
+// findAdvertisingStrategy("Молоко Стерилізоване");
 
 
 // Добавить Event Listeners
@@ -303,7 +394,8 @@ window.onload = () => {
     const calculateButton = document.getElementById("calculate-button");
     const formLabel = document.getElementById("form-label");
     const marketingEffectInput = document.getElementById("input-possible-marketing-effect");
-    const formAdvertising = document.getElementById("form-advertising");
+
+
 
     const programModes:any = {
         marketingEffect: {
@@ -313,7 +405,7 @@ window.onload = () => {
                 calculateButton.classList.toggle("marketing")
                 formLabel.style.display = "block";
                 formLabel.innerText = "Рыночный эффект";
-                formAdvertising.style.display = "none";
+                programModes.advertisingBudget.formNode.style.display = "none";
 
                 buttonEvent(() => {
                     return alert("Данная функция еще не доступна");
@@ -322,22 +414,33 @@ window.onload = () => {
         },
         advertisingBudget: {
             node: document.getElementById("radio-advertising-budget"),
+            formNode: document.getElementById("form-advertising"), //Откуда беруться данные 
+            resultNode: document.querySelectorAll(".window-main-right-advertising-table-cell.result"), //Куда записывается результат
+
             appearence() {
                 marketingEffectInput.style.display = "none";
                 calculateButton.classList.toggle("marketing");
                 formLabel.style.display = "none";
-                formAdvertising.style.display = "block";
+                programModes.advertisingBudget.formNode.style.display = "block";
 
                 buttonEvent(segment  => { // Считаем возможный рыночный эффект от заданного пользователем рекламного бюджета
                     const adStrategy = new AdvertisingStrategy(segment);
                     const adInputs:any = document.getElementsByClassName("window-main-left-form-count-advertising-item-input");
-
+                    
                     let i = 0;
-                    for (let adType in adStrategy.advertismentType) {
-                        adStrategy.advertismentType[adType] = adInputs[i++].value;
+                    for (let adType in adStrategy.advertismentTypes) {
+                        adStrategy.advertismentTypes[adType] = (adInputs[i++].value); //Записываем значение из инпутов в объект
                     }
 
-                    console.log(adStrategy.calcSummaryMarketingEffect());
+                    let roundTo = 6;
+                    let adResult:any = adStrategy.calcSummaryMarketingEffect();
+
+                    for (let i = 0; i < programModes.advertisingBudget.resultNode.length; i++) {
+                        let result = adResult[i].toString().slice(0, roundTo + 1);
+                        programModes.advertisingBudget.resultNode[i].innerText = result;
+                    }
+
+                    adStrategy.findDeriviatives();
                 });
             },
         },
