@@ -1,14 +1,9 @@
 @import "utils/var";
 @import "utils/mixins";
 @import "utils/reset";
-@import "utils/button";
+@import "components/button";
 
 @import "components/window.scss";
-
-
-body {
-    @include font("Inter", 14px);
-
-    background-color: $bg-color;
-}
-
+@import "components/options.scss";
+@import "components/effect.scss";
+@import "components/main.scss";

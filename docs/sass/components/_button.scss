@@ -4,8 +4,8 @@ button {
     padding: 1rem 2rem;
     margin: 0;
     text-decoration: none;
-    background: #00adb5;
-    color: #ffffff;
+    background: $color3;
+    color: $color1;
     font-family: "JetBrains Mono";
     font-weight: 700;
     border-radius: 3px;
@@ -16,18 +16,18 @@ button {
         transform 250ms ease;
     -webkit-appearance: none;
     -moz-appearance: none;
+    border: 1px solid $color3;
 }
 
-button:hover,
-button:focus {
-    background: #393e46;
+button:hover {
+    background: $color1;
+    color: $color3;
 }
 
 button:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
+    outline: none;
 }
 
 button:active {
-    transform: scale(0.99);
+    transform: scale(0.98);
 }

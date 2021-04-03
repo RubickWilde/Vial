@@ -1,216 +1,47 @@
 :root {
     --width: 900px;
-    --height: 600px;
+    --height: 590px;
+}
+
+body {
+    @include font("Inter", 14px);
+
+    background-color: $color2;
+}
+
+.hidden {
+    display: none;
 }
 
 .box-shadow {
-    border: $border;
-    box-shadow: $box-shadow;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px $color3;
 }
 
-.window {
-    width: var(--width);
-    height: var(--height);
-    background-color: #fff;
-    border: $border;
-    border-radius: 13px;
 
-    &-wrapper {
-        min-height: 100vh;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
+.content {
+    @include flex(space-around, center, row);
 
-    &-inner {
-        padding: 45px 87px 52px;
-        display: flex;
-        flex-direction: column;
-    }
+    height: 650px;
+    width: 90%;
+    margin: auto;
+}
 
-    &-title {
-        width: 100%;
-        height: 33px;
-        border-bottom: $border;
-        padding: 0 87px;
-        line-height: 32px;
-        font-weight: 600;
-    }
+.sidebar {
+    @include flex();
+    height: 500px;
 
-    &-options {
-        width: 725px;
-        height: 50px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
+    margin-right: 50px;
+}
 
-        &-list {
-            display: flex;
-            padding: 0 50px;
-        }
-
-        &-item {
-            padding: 0 10px;
-
-            &-label {
-                padding-left: 10px;
-            }
-        }
-    }
-
-    &-main {
-        width: 725.09px;
-        height: 393px;
-        margin-top: 30px;
-        border: $border;
-        border-radius: 8px;
-
-        &-inner {
-            padding: 42px 36px 28px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        &-left {
-            width: 253px;
-            height: 323px;
-            position: relative;
-            border: $border;
-            padding: 28px 18px 15px;
-            border-radius: 5px 5px 2px 2px;
-
-            &-form {
-                &-select {
-                    width: 100%;
-                    height: 30px;
-                }
-
-                &-count {
-                    margin-bottom: 24px;
-                    
-                    &-marketing-effect {
-                        &-label {
-                            width: 100%;
-                            height: 37px;
-                            margin-top: 28px;
-                            font-family: "JetBrains Mono", monospace;
-                            font-weight: 700;
-                            text-align: center;
-                            line-height: 35px;
-                            margin-bottom: 24px;
-                            border: $border-grey;
-                            font-size: 18px;
-                        }
-    
-                        &-input{ 
-                            width: 100%;
-                            height: 30px;
-                            margin-bottom: 24px;
-                            border-radius: 8px;
-                            text-align: right;
-    
-                            &:focus {
-                                outline: none;
-                            }
-    
-                            &::placeholder{
-                                text-align: right;
-                            }
-                        }
-                    }
-
-
-                    &-advertising {
-                        margin-top: 10px;
-                        display: none;
-
-                        &-item {
-                            display: flex;
-                            justify-content: space-between;
-                            margin-bottom: 2px;
-
-                            &-input {
-                                width: 100px;
-                            }
-                        }
-                    }
-                }
-
-                &-button {
-                    position: absolute;
-                    bottom: 15  px;
-
-                    &.marketing {
-                        bottom: 30px;
-                    } 
-
-                    &-wrapper {
-                        display: flex;
-                        justify-content: space-around;
-                    }
-                }
-            }
-        }
-
-        &-right {
-            width: 365.24px;
-            height: 323px;
-            position: relative;
-            border-radius: 5px 5px 2px 2px;
-            white-space: nowrap;
-            
-            &-advertising-table {
-                margin: 20px 38px;
-
-                &-title {
-                    font-size: 20px;
-                    font-family: "JetBrains Mono", monospace;
-                    display: none;
-                }
-
-                &-row {
-                    &-name {
-                        font-family: "JetBrains Mono", monospace;
-                        font-size: 16px;
-                        font-weight: 600;   
-                        color: $grey1;
-
-                        &.budget, &.result {
-                            text-align: right;
-
-                        }
-                    }
-
-                    &.sum {
-                        position: absolute;
-                        bottom: 20px;
-
-                        .sum {
-                            font-size: 16px;
-
-                            &.label {
-                                text-decoration: underline;
-                                width: 132px;
-                            }
-
-                            &.budget {
-                                width: 83px;
-                            }
-
-                            &.result {
-                                width: 72px;
-                            }
-                        }
-                    }
-                }
-
-                &-cell {
-                    &.result, &.budget {
-                        text-align: right;
-                        width: 100px;
-                    }
-                }
-            }
-        }
-    }
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-radius: 15px;
+    width: 40px;
+    height: 40px;
+    background: url("../../img/loader.gif");
+    background-size: contain;
 }

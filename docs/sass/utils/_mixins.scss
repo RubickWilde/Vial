@@ -2,10 +2,23 @@
   @return ($px / $base) * 1rem;
 }
 
-@mixin font($font-family, $font-size, $font-color: $font-black) {
+@mixin font($font-family, $font-size, $font-color: #000) {
   font-family: $font-family;
   font-size: $font-size;
   color: $font-color;
+}
+
+@mixin flex($justify: space-between, $align: center, $direction: column) {
+  display: flex;
+  justify-content: $justify;
+  flex-direction: $direction;
+  align-items: $align;
+}
+
+@mixin flex-row($justify: space-between, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 @mixin center($width, $height) {

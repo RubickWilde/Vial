@@ -1,0 +1,112 @@
+.main {
+  background-color: $color1;
+  position: relative;
+  height: 500px;
+  min-width: 600px;
+  border-radius: 8px;
+  padding: 40px 50px;
+
+  input[type="number"] {
+    color: $color4;
+
+    &::placeholder {
+      color: $color3;
+    }
+  }
+
+  input[disabled], input[disabled]::placeholder {
+    color: black;
+  }
+
+  &-header {
+    @include flex(space-between, center, row);
+
+    height: 40px;
+  }
+
+  &-select-segment-select {
+    font-size: 17px;
+    background-color: $color1;
+    border-color: $color3;
+    height: 35px;
+    border-radius: 3px;
+  }
+
+  &-select-mode {
+    @extend .main-select-segment-select;
+  }
+}
+
+.marketing-form {
+  margin-top: 20px;
+  font-size: 20px;
+
+  &-list {
+    @include flex();
+
+    padding: 0 15px;
+    height: 300px;
+  }
+
+  &-item {
+    @include flex-row();
+    width: 100%;
+
+    &-label {
+      width: 150px;
+
+      &.sum {
+        font-style: italic;
+      }
+    }
+
+    &-budget {
+      text-align: center;
+      background-color: $color1;
+      border: none;
+      width: 150px;
+
+      &:focus {
+        outline: none;
+      }
+
+      &.incorrect {
+        outline: 1px solid red;
+      }
+    }
+
+    &.sum {
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 2px dashed $color4;
+    }
+
+    .sum {
+      font-size: 22px;
+    }
+  }
+
+  &-effect {
+    text-align: right;
+    width: 130px;
+    background-color: $color1;
+    border: none;
+  }
+
+  &-submit {
+    @extend button;
+
+    display: none;
+
+    &-wrapper {
+      @include flex(center);
+
+      position: absolute;
+      bottom: 20px;
+      width: 150px;
+      right: 50%;
+      margin-right: -75px;
+    }
+
+  }
+}

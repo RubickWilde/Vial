@@ -15,34 +15,34 @@ const { watch } = require('gulp');
 gulp.task('browser-sync', function(cb) {
     browserSync.init({
         server: {
-            baseDir: "./dist"
+            baseDir: "./docs"
         }
     });
 
-    browserSync.watch('dist/').on('change', browserSync.reload);
+    browserSync.watch('docs/').on('change', browserSync.reload);
 
     cb();
 });
 
 gulp.task('sass', function(cb) {
-  gulp.src('dist/sass/**/*.scss')
+  gulp.src('docs/sass/**/*.scss')
     .pipe(sass({
       outputStyle: 'expanded',
     }).on('error', sass.logError))
     .pipe(autoprefixer(
       ['Last 30 versions']
     ))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('docs/css'))
     .pipe(browserSync.reload({stream: true}));
 
   cb();
 });
 
 gulp.task('tinypng', function () {
-	return gulp.src('dist/img/**/*.{png,jpg,jpeg}')
+	return gulp.src('docs/img/**/*.{png,jpg,jpeg}')
 		.pipe(tinypng({
 			key: 'CMX7yWxk1lc5Fp9nMWGlRX7pMBGrwGsc',
-			sigFile: 'dist/img/.tinypng-sigs',
+			sigFile: 'docs/img/.tinypng-sigs',
 			log: true
 		}))
 		.pipe(gulp.dest('img'));
@@ -54,12 +54,12 @@ gulp.task('scripts', function () {
       noImplicitAny: true,
       outFile: 'output.js'
     }))
-    .pipe(gulp.dest('dist/js'));
+    .pipe(gulp.dest('docs/js'));
 });
 
 gulp.task('default', function() {
-  gulp.watch('dist/**/*.html', gulp.series('browser-sync'));
-  gulp.watch('dist/**/*.scss', gulp.series('sass','browser-sync'));
-	// gulp.watch('dist/img/**/*.{png,jpg,jpeg}', gulp.series('tinypng'));
-  gulp.watch('src/*.ts').on('change', gulp.series("scripts", 'browser-sync'));
+  gulp.watch('docs/**/*.html', gulp.series('browser-sync'));
+  gulp.watch('docs/**/*.scss', gulp.series('sass','browser-sync'));
+	// gulp.watch('docs/img/**/*.{png,jpg,jpeg}', gulp.series('tinypng'));
+  // gulp.watch('src/*.ts').on('change', gulp.series("scripts", 'browser-sync'));
 });

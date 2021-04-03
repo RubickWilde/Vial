@@ -1,0 +1,19 @@
+.options {
+  background-color: $color1;
+  padding: 30px;
+  width: 225px;
+  border-radius: 8px;
+
+  &-list {
+    @include flex(space-around, center, column);
+  }
+
+  &-item {
+    margin-bottom: 10px;
+    width: 100%;
+
+    &-button {
+      width: 100%;
+    }
+  }
+}
