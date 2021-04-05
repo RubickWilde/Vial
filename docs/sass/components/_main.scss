@@ -91,6 +91,10 @@
     width: 130px;
     background-color: $color1;
     border: none;
+
+    &-result {
+      @extend .marketing-form-effect;
+    }
   }
 
   &-submit {

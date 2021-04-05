@@ -31,6 +31,7 @@ $(function () {
         minBudget: JSON.parse(localStorage.getItem("minBudget")),
         minPME: JSON.parse(localStorage.getItem("minPME")),
     };
+
     const adQuotient: Advertisting = {
         "Промоушен": 1.1506,
         "Радіо": 1.26627,
@@ -41,10 +42,23 @@ $(function () {
         "Телебачення": 1.16465
     };
 
-    // downloadData("list", "minBudget", "minPME", "adQuotient", "equipment");
+    const selectSegment: any = $("#selectSegment"),
+          selectMode = $("#selectMode"),
+          marketingButton = $("#marketing-button"),
+          advertisingForm = $("#advertising-form"),
+          marketingBudgets: HTMLInputElement[] = <any>$(".by-marketing-budget"),
+          marketingEffects: HTMLInputElement[] = <any>$(".marketing-form-effect"),
+          marketingBudgetSum = $("#marketing-budget-sum"),
+          marketingEffectSum = $("#marketing-effect-sum"),
+          inputNumbers = $(".marketing-form input[type='number']");
+          
 
-    $("#selectSegment").on("change", () => {
-        const budget = segments.minBudget[<any>$("#selectSegment").val()];
+    downloadData("list", "minBudget", "minPME", "adQuotient", "equipment");
+
+    selectSegment.on("change", () => {
+        const budget = segments.minBudget[parseInt(selectSegment.val())];
+
+        inputNumbers.val("");
 
         if (budget === undefined) {
             <any>$("#marketing-button").hide("fast");
@@ -61,16 +75,14 @@ $(function () {
         }
     });
 
-    $("#selectMode").on("change", (e: any) => {
-        const select = $(".marketing-form input[type='number']");
-
-        select.prop("disabled", true);
-        select.val("");
+    selectMode.on("change", (e: any) => {
+        inputNumbers.prop("disabled", true);
+        inputNumbers.val("");
 
         $(`.${e.target.value}`).removeAttr("disabled");
     });
 
-    $("#marketing-button").on("click", (e: any) => {
+    marketingButton.on("click", (e: any) => {
         e.preventDefault();
 
         switch ($("#selectMode").val()) {
@@ -103,27 +115,40 @@ $(function () {
 
             const result: Result = calcByAdBudgets($("#selectSegment").val() as any, adBudgets);
 
-            (<any>$("#marketing-budget-sum")[0]).value = result.budgetsSum;
-            ($("#marketing-effect-sum") as any)[0].value = result.adEffectSum;
-            adEffects = result.adEffect;
-
-            for (let ad in adEffects) {
-                if (!adEffects.hasOwnProperty(ad)) continue;
-                $(`.marketing-form-effect[name = "${ad}"]`).val(adEffects[ad]);
-            }
+            displayResult(result);
         }
 
         function byMarketEffect() {
             const neededMarketingEffect: string = <any>$("#marketing-effect-sum").val();
             const selectedSegment: string = <any>$("#selectSegment").val();
 
-            console.log(calcByMarketingEffect(parseFloat(selectedSegment), parseFloat(neededMarketingEffect)));
+            loader();
+
+            setTimeout(() => {
+                displayResult(calcByMarketingEffect(parseFloat(selectedSegment), parseFloat(neededMarketingEffect)));
+            }, 50);
+            
+
+            setTimeout(() => {loader()}, 51);
         }
 
         function byOveralBudget() {}
+
+        function displayResult(result: Result): void {
+            for (let ad of marketingEffects) {
+                ad.value = result.adEffect[ad.name] || "0";
+            }
+
+            for (let ad of marketingBudgets) {
+                ad.value = result.budgets[ad.name];
+            }
+
+            marketingBudgetSum.val(result.budgetsSum);
+            marketingEffectSum.val(result.adEffectSum);
+        }
     });
 
-    $("#advertising-form").on("input", (e:any) => {
+    advertisingForm.on("input", (e:any) => {
         if (parseInt(e.target.value) < parseInt(e.target.min)) {
             e.target.classList.add("incorrect");
             $("#marketing-button").addClass("incorrect");
@@ -173,7 +198,9 @@ $(function () {
 
         effectSum = round(effectSum, 5);
 
-        return new Result(advertisingBudgets, budgetSum, adEffect, effectSum);
+        const result = new Result(advertisingBudgets, budgetSum, adEffect, effectSum);
+
+        return result;
 
         function round(number: number, digitsAfterDot: number): number {
             return Math.round(number*Math.pow(10, digitsAfterDot))/Math.pow(10, digitsAfterDot);
@@ -196,8 +223,9 @@ $(function () {
             "Промоушен": 0
         }
         
+        let i = 0;
         while (neededEffect > current.adEffectSum) {
-            const adMax = calcDerivative(minBudget, minPME, currentBudget) as any;
+            const adMax = calcDerivative(minBudget, minPME, currentBudget, segment) as any;
             
             if (currentBudget.hasOwnProperty(adMax)) {
                 currentBudget[adMax] += (currentBudget[adMax] >= minBudget[adMax]) ? 1000 : minBudget[adMax];
@@ -206,20 +234,34 @@ $(function () {
             }
 
             current = calcByAdBudgets(segment, currentBudget);
+
+            if (i == 80000) {
+                alert("Ваша цифра занадто велика. Не можу її порахувати(");
+                return null;
+            }
+
+            i++;
         }
 
         return current;
     }
 
-    function calcDerivative(minBudget: any, minPME: any, adBudgets: any): string {
+    function calcDerivative(minBudget: any, minPME: any, adBudgets: any, segment: number): string {
         let maxDerivative = 0,
             maxDerivativeName;
 
         for (let ad in adBudgets) {
             if (!adBudgets.hasOwnProperty(ad)) continue;
 
-            const priceDif = (adBudgets[ad] >= minBudget) ? 1000 : minBudget[ad];
-            const effectDif = calcAdMarketingEffect(minBudget[ad], minPME[ad], adQuotient[ad], adBudgets[ad] + priceDif) - calcAdMarketingEffect(minBudget[ad], minPME[ad], adQuotient[ad], adBudgets[ad]);
+            const priceDif = (adBudgets[ad] >= minBudget) ? 1000: minBudget[ad];
+
+            const possibleAdBudget = {...adBudgets};
+
+            
+            possibleAdBudget[ad] += priceDif;
+            
+            const effectDif = calcByAdBudgets(segment, possibleAdBudget).adEffectSum - calcByAdBudgets(segment, adBudgets).adEffectSum;
+
             const derivative = effectDif/priceDif;
 
              if (derivative > maxDerivative) {
@@ -237,8 +279,7 @@ $(function () {
     }
 
     function downloadData(...args: string[]) {
-        $("#loader").toggleClass("hidden");
-        $("#main").toggleClass("hidden");
+        loader();
 
         for (let i=0; i < arguments.length; i++) {
             const xhr = new XMLHttpRequest();
@@ -256,10 +297,7 @@ $(function () {
 
                 localStorage.setItem(argument, JSON.stringify(data));
 
-                if (i == arguments.length - 1) {
-                    $("#loader").toggleClass("hidden");
-                    $("#main").toggleClass("hidden");
-                }
+                if (i == arguments.length - 1) loader();
 
                 function correctId(data: any): object[] {
                     let correctedId = new Array(13);
@@ -271,6 +309,11 @@ $(function () {
                 }
             }
         }
+    }
+
+    function loader() {
+        $("#loader").toggleClass("hidden");
+        $("#main").toggleClass("hidden");
     }
 });
 
