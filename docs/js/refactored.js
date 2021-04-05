@@ -77,15 +77,23 @@ $(function () {
             displayResult(result);
         }
         function byMarketEffect() {
-            const neededMarketingEffect = $("#marketing-effect-sum").val();
-            const selectedSegment = $("#selectSegment").val();
+            const neededMarketingEffect = parseFloat(marketingEffectSum.val());
+            const selectedSegment = parseFloat($("#selectSegment").val());
             loader();
             setTimeout(() => {
-                displayResult(calcByMarketingEffect(parseFloat(selectedSegment), parseFloat(neededMarketingEffect)));
+                displayResult(calcByMarketingEffect(selectedSegment, neededMarketingEffect));
             }, 50);
             setTimeout(() => { loader(); }, 51);
         }
-        function byOveralBudget() { }
+        function byOveralBudget() {
+            const neededOveralBudget = parseFloat(marketingBudgetSum.val());
+            const selectedSegment = parseFloat($("#selectSegment").val());
+            loader();
+            setTimeout(() => {
+                displayResult(calcByOveralBudget(selectedSegment, neededOveralBudget));
+            }, 50);
+            setTimeout(() => { loader(); }, 51);
+        }
         function displayResult(result) {
             for (let ad of marketingEffects) {
                 ad.value = result.adEffect[ad.name] || "0";
@@ -160,6 +168,37 @@ $(function () {
         };
         let i = 0;
         while (neededEffect > current.adEffectSum) {
+            const adMax = calcDerivative(minBudget, minPME, currentBudget, segment);
+            if (currentBudget.hasOwnProperty(adMax)) {
+                currentBudget[adMax] += (currentBudget[adMax] >= minBudget[adMax]) ? 1000 : minBudget[adMax];
+            }
+            else {
+                console.error("Some shit happened");
+            }
+            current = calcByAdBudgets(segment, currentBudget);
+            if (i == 80000) {
+                alert("Ваша цифра занадто велика. Не можу її порахувати(");
+                return null;
+            }
+            i++;
+        }
+        return current;
+    }
+    function calcByOveralBudget(segment, neededBudget) {
+        const minBudget = segments.minBudget[segment];
+        const minPME = segments.minPME[segment];
+        let current = new Result(0, 0, 0, 0);
+        let currentBudget = {
+            "Інтернет": 0,
+            "Телебачення": 0,
+            "Радіо": 0,
+            "Транспорт": 0,
+            "Преса": 0,
+            "Зовнішні носії": 0,
+            "Промоушен": 0
+        };
+        let i = 0;
+        while (neededBudget > current.budgetsSum) {
             const adMax = calcDerivative(minBudget, minPME, currentBudget, segment);
             if (currentBudget.hasOwnProperty(adMax)) {
                 currentBudget[adMax] += (currentBudget[adMax] >= minBudget[adMax]) ? 1000 : minBudget[adMax];

@@ -119,20 +119,32 @@ $(function () {
         }
 
         function byMarketEffect() {
-            const neededMarketingEffect: string = <any>$("#marketing-effect-sum").val();
-            const selectedSegment: string = <any>$("#selectSegment").val();
+            const neededMarketingEffect: number = parseFloat(<any>marketingEffectSum.val());
+            const selectedSegment: number = parseFloat(<any>$("#selectSegment").val());
 
             loader();
 
             setTimeout(() => {
-                displayResult(calcByMarketingEffect(parseFloat(selectedSegment), parseFloat(neededMarketingEffect)));
+                displayResult(calcByMarketingEffect(selectedSegment, neededMarketingEffect));
             }, 50);
             
 
             setTimeout(() => {loader()}, 51);
         }
 
-        function byOveralBudget() {}
+        function byOveralBudget() {
+            const neededOveralBudget: number = parseFloat(<any>marketingBudgetSum.val());
+            const selectedSegment: number = parseFloat(<any>$("#selectSegment").val());
+
+            loader();
+
+            setTimeout(() => {
+                displayResult(calcByOveralBudget(selectedSegment, neededOveralBudget));
+            }, 50);
+            
+
+            setTimeout(() => {loader()}, 51);
+        }
 
         function displayResult(result: Result): void {
             for (let ad of marketingEffects) {
@@ -225,6 +237,45 @@ $(function () {
         
         let i = 0;
         while (neededEffect > current.adEffectSum) {
+            const adMax = calcDerivative(minBudget, minPME, currentBudget, segment) as any;
+            
+            if (currentBudget.hasOwnProperty(adMax)) {
+                currentBudget[adMax] += (currentBudget[adMax] >= minBudget[adMax]) ? 1000 : minBudget[adMax];
+            } else {
+                console.error("Some shit happened")
+            }
+
+            current = calcByAdBudgets(segment, currentBudget);
+
+            if (i == 80000) {
+                alert("Ваша цифра занадто велика. Не можу її порахувати(");
+                return null;
+            }
+
+            i++;
+        }
+
+        return current;
+    }
+
+    function calcByOveralBudget(segment: number, neededBudget: number): Result {
+        const minBudget = segments.minBudget[segment];
+        const minPME = segments.minPME[segment]; 
+
+        let current = new Result(0, 0, 0, 0);
+
+        let currentBudget: Advertisting = {
+            "Інтернет": 0,
+            "Телебачення": 0,
+            "Радіо": 0,
+            "Транспорт": 0,
+            "Преса": 0,
+            "Зовнішні носії": 0,
+            "Промоушен": 0
+        }
+        
+        let i = 0;
+        while (neededBudget > current.budgetsSum) {
             const adMax = calcDerivative(minBudget, minPME, currentBudget, segment) as any;
             
             if (currentBudget.hasOwnProperty(adMax)) {
