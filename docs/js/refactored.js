@@ -29,10 +29,10 @@ $(function () {
         const budget = segments.minBudget[parseInt(selectSegment.val())];
         inputNumbers.val("");
         if (budget === undefined) {
-            $("#marketing-button").hide("fast");
+            $("#marketing-button").addClass("inactive");
         }
         else {
-            $("#marketing-button").show("fast");
+            $("#marketing-button").removeClass("inactive");
         }
         for (let adv in budget) {
             if (!budget.hasOwnProperty(adv) || adv == "Id" || adv == "Сегмент")

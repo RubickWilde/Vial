@@ -61,9 +61,9 @@ $(function () {
         inputNumbers.val("");
 
         if (budget === undefined) {
-            <any>$("#marketing-button").hide("fast");
+            <any>$("#marketing-button").addClass("inactive");
         } else {
-            <any>$("#marketing-button").show("fast");
+            <any>$("#marketing-button").removeClass("inactive");
         }
 
         for (let adv in budget) {

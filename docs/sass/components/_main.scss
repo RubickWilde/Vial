@@ -2,7 +2,7 @@
   @include respond-to(mobile) {
     width: 100%;
     height: 100%;
-    padding: 30px 30px;
+    padding: 30px 15px;
 
     .inner {
       position: relative;
@@ -33,6 +33,7 @@
     @include respond-to(mobile) {
       flex-direction: column;
       height: max-content;
+      margin: 0;
     }
 
     margin: 0 25px;
@@ -79,7 +80,6 @@
   margin-top: 20px;
   font-size: 20px;
   padding: 0 30px;
-  position: relative;
 
   @include respond-to(mobile) {
     position: absolute;
@@ -153,8 +153,6 @@
 
   &-submit {
     @extend button;
-
-    display: none;
 
     &-wrapper {
       @include flex(center);
