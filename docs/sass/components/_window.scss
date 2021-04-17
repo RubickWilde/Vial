@@ -20,6 +20,10 @@ body {
 
 .content {
     @include flex(space-around, center, row);
+    @include respond-to(mobile) {
+        width: 100vw;
+        height: 100vh;
+    }
 
     height: 650px;
     width: 90%;

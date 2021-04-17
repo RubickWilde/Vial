@@ -807,6 +807,13 @@ body {
   margin: auto;
 }
 
+@media screen and (max-width: 767px) {
+  .content {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
 .sidebar {
   display: -webkit-box;
   display: -webkit-flex;
@@ -937,10 +944,20 @@ body {
   background-color: #FEFFDE;
   position: relative;
   height: 500px;
-  min-width: 600px;
+  width: 600px;
   -webkit-border-radius: 8px;
           border-radius: 8px;
   padding: 40px 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    width: 100%;
+    height: 100%;
+  }
+  .main .inner {
+    position: relative;
+  }
 }
 
 .main input[type="number"] {
@@ -1008,6 +1025,26 @@ body {
   height: 40px;
 }
 
+@media screen and (max-width: 767px) {
+  .main-header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-select-segment {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+
 .main-select-segment-select, .main-select-mode {
   font-size: 17px;
   background-color: #FEFFDE;
@@ -1017,9 +1054,25 @@ body {
           border-radius: 3px;
 }
 
+@media screen and (max-width: 767px) {
+  .main-select-segment-select, .main-select-mode {
+    width: 100%;
+  }
+}
+
 .marketing-form {
   margin-top: 20px;
   font-size: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .marketing-form {
+    position: absolute;
+    top: 120px;
+    right: 40px;
+    left: 40px;
+    bottom: 40px;
+  }
 }
 
 .marketing-form-list {
@@ -1044,6 +1097,13 @@ body {
   height: 300px;
 }
 
+@media screen and (max-width: 767px) {
+  .marketing-form-list {
+    height: 80%;
+    margin-bottom: 40px;
+  }
+}
+
 .marketing-form-item {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1061,7 +1121,7 @@ body {
 }
 
 .marketing-form-item-label {
-  width: 150px;
+  width: 34%;
 }
 
 .marketing-form-item-label.sum {
@@ -1072,7 +1132,7 @@ body {
   text-align: center;
   background-color: #FEFFDE;
   border: none;
-  width: 150px;
+  width: 34%;
 }
 
 .marketing-form-item-budget:focus {
@@ -1095,7 +1155,7 @@ body {
 
 .marketing-form-effect, .marketing-form-effect-result {
   text-align: right;
-  width: 130px;
+  width: 22%;
   background-color: #FEFFDE;
   border: none;
 }
@@ -1127,4 +1187,15 @@ body {
   width: 150px;
   right: 50%;
   margin-right: -75px;
+}
+
+@media screen and (max-width: 767px) {
+  .marketing-form-submit-wrapper {
+    position: static;
+    margin: 0 0 20px;
+    width: 100%;
+  }
+  .marketing-form-submit-wrapper input {
+    width: 100%;
+  }
 }
