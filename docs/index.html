@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vial</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>-->
     <script src="js/jquery-3.6.0.js"></script>
     <script src="js/refactored.js"></script>
     <link rel="stylesheet" href="css/style.css">
@@ -22,7 +21,6 @@
         <div class="main-inner" id="main">
             <div class="main-header">
                 <div class="main-select-segment">
-                    <!--                <label for="selectSegment" class="main-select-segment-label">Сегменты</label>-->
                     <select name="select-segment" id="selectSegment" class="main-select-segment-select">
                         <option value="" class="main-select-segment-option" selected="selected">Оберіть сегмент</option>
                         <option value="0" class="main-select-segment-option">Молоко Стерилізоване</option>
@@ -41,7 +39,6 @@
                     </select>
                 </div>
                 <div class="main-select-mode">
-                    <!--                <label for="selectMode" class="main-select-mode-label">Режимы работы</label>-->
                     <select name="select-mode" id="selectMode" class="main-select-mode">
                         <option value="Mode" class="main-select-mode-option" selected="selected">Оберіть режим</option>
                         <option value="by-marketing-budget" class="main-select-mode-option">За рекламними бюджетами</option>
@@ -100,111 +97,5 @@
         </div>
     </div>
 </div>
-<!--<div class="window-wrapper">-->
-<!--        <div class="window">-->
-<!--            <div class="window-title">Vial  v0.1.0</div>-->
-<!--            <div class="window-inner" id="window-content">-->
-<!--            </div>-->
-<!--&lt;!&ndash;            <div class="window-inner" id="window-content">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="window-options box-shadow">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <ul class="window-options-list">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <li class="window-options-item"><input type="radio" name="choose-mode" id="radio-possible-marketing-effect" class="window-options-item-radio" checked><label class="window-options-item-label" for="radio-possible-marketing-effect">Возможный рыночный эффект</label></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <li class="window-options-item"><input type="radio" name="choose-mode" id="radio-advertising-budget" class="window-options-item-radio"><label for="radio-advertising-budget" class="window-options-item-label">Рекламный бюджет</label></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <li class="window-options-item"><input type="radio" name="choose-mode" id="radio-advertising-demand" class="window-options-item-radio" disabled><label for="radio-advertising-demand" class="window-options-item-label">Необходимый спрос</label></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="window-main">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="window-main-inner">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="window-main-left box-shadow">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <div class="window-main-left-form">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <select name="segments" id="segment-select" class="window-main-left-form-select">&ndash;&gt;-->
-<!--&lt;!&ndash;                                </select>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <div class="window-main-left-form-count">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="window-main-left-form-count-marketing-effect">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <label for="input-possible-marketing-effect" class="window-main-left-form-count-marketing-effect-label" id="form-label">Рыночный эффект</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <input type="text" name="marketing-effect" placeholder="0.00256" class="window-main-left-form-count-marketing-effect-input box-shadow" id="input-possible-marketing-effect">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="window-main-left-form-count-advertising" id="form-advertising">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <ul class="window-main-left-form-count-advertising-list">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <li class="window-main-left-form-count-advertising-item"><label for="ad-input-internet" class="window-main-left-form-count-advertising-item-label">Интернет</label><input type="text" name="Интернет" id="ad-input-internet" class="window-main-left-form-count-advertising-item-input"></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <li class="window-main-left-form-count-advertising-item"><label for="ad-input-television" class="window-main-left-form-count-advertising-item-label">Телевидение</label><input type="text" name="Телевидение" id="ad-input-television" class="window-main-left-form-count-advertising-item-input"></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <li class="window-main-left-form-count-advertising-item"><label for="ad-input-radio" class="window-main-left-form-count-advertising-item-label">Радио</label><input type="text" name="Радио" id="ad-input-radio" class="window-main-left-form-count-advertising-item-input"></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <li class="window-main-left-form-count-advertising-item"><label for="ad-input-transport" class="window-main-left-form-count-advertising-item-label">Транспорт</label><input type="text" name="Транспорт" id="ad-input-transport" class="window-main-left-form-count-advertising-item-input"></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <li class="window-main-left-form-count-advertising-item"><label for="ad-input-press" class="window-main-left-form-count-advertising-item-label">Пресса</label><input type="text" name="Пресса" id="ad-input-press" class="window-main-left-form-count-advertising-item-input"></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <li class="window-main-left-form-count-advertising-item"><label for="ad-input-external-devices" class="window-main-left-form-count-advertising-item-label">Вн. носители</label><input type="text" name="Внешние носители" id="ad-input-external-devices" class="window-main-left-form-count-advertising-item-input"></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <li class="window-main-left-form-count-advertising-item"><label for="ad-input-promotion" class="window-main-left-form-count-advertising-item-label">Промоушен</label><input type="text" name="Промоушен" id="ad-input-promotion" class="window-main-left-form-count-advertising-item-input"></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <div class="window-main-left-form-button-wrapper">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <button class="window-main-left-form-button" id="calculate-button">Посчитать</button>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div class="window-main-right box-shadow">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <div class="window-main-right-advertising">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <table class="window-main-right-advertising-table">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <thead>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <th colspan="3" class="window-main-right-advertising-table-title">Реклама</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-row-name label">Вид рекламы</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-row-name budget">Бюджет</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-row-name result">ВРЭ</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </thead>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <tbody>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr class="window-main-right-advertising-table-row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell label">Интернет</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell budget">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell result">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr class="window-main-right-advertising-table-row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell label">Телевидение</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell budget">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell result">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr class="window-main-right-advertising-table-row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell label">Радио</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell budget">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell result">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr class="window-main-right-advertising-table-row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell label">Транспорт</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell budget">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell result">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr class="window-main-right-advertising-table-row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell label">Преса</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell budget">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell result">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr class="window-main-right-advertising-table-row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell label">Внешние носители</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell budget">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell result">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr class="window-main-right-advertising-table-row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell label">Промоушен</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell budget">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell result">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <tr class="window-main-right-advertising-table-row sum"  id="advertising_sum">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell label sum">Сумма</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell budget sum" id="advertising-budget">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <td class="window-main-right-advertising-table-cell result sum" id="advertising-marketing-effect">0</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </tbody>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    &ndash;&gt;-->
-<!--&lt;!&ndash;                                </table>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        &ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
 </body>
 </html>
