@@ -122,7 +122,7 @@ $(function () {
             const neededMarketingEffect: number = parseFloat(<any>marketingEffectSum.val());
             const selectedSegment: number = parseFloat(<any>$("#selectSegment").val());
 
-            loader();
+            loader(); 
 
             setTimeout(() => {
                 displayResult(calcByMarketingEffect(selectedSegment, neededMarketingEffect));
