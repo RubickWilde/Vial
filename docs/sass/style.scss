@@ -1,8 +1,9 @@
 @import "utils/var";
 @import "utils/mixins";
 @import "utils/reset";
-@import "components/button";
+@import "utils/normalize";
 
+@import "components/button";
 @import "components/window.scss";
 @import "components/options.scss";
 @import "components/effect.scss";
